@@ -1,15 +1,15 @@
 import "reflect-metadata"
-import Model from "./core/Model"
+import Repository, {Table, Column} from "./core/Model"
 
-function Table(constructor: Function) {
-  console.log(constructor)
-}
-
-@Table
+@Table("users")
 class User {
+  @Column("id")
   private _id!: number
+  @Column("name")
   private _name!: string
+  @Column("email")
   private _email!: string
+  @Column("descrition")
   private _description!: string
 
   public get id() : number {
@@ -24,7 +24,13 @@ class User {
     return this._email
   }
 
+  public test() {
+    return "bosta"
+  }
+
   public get description() : string {
     return this._description
   }
 }
+
+Repository.findAll(User)
