@@ -12,6 +12,7 @@ class Repository {
     const tableName = getTableName(model)
     const fields = getTableColumns(model)
     
+
   }
 }
 
@@ -21,14 +22,14 @@ export function Table(tableName?: string) {
   }
 }
 
-export function Column(column: string): PropertyDecorator {
+export function Column(column?: string): PropertyDecorator {
   return (target, key) => {
     const fields = (Reflect.getOwnMetadata('@fields', target) || []) as Field[];
     const hasField = fields.find(field => String(field.key) === String(key))
     if (!hasField) {
       fields.push({
         key: String(key),
-        column
+        column: column || key.toString().toLowerCase()
       })
     }
     Reflect.defineMetadata('@fields', fields, target)
