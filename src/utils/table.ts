@@ -17,3 +17,17 @@ export function getTableColumns(model: Model): Field [] {
   const fields: Field[] = (Reflect.getOwnMetadata('@fields', model.prototype) || []) as Field[];
   return fields
 }
+
+export function mapRowToModel<T>(row: Record<string, string>, model: Model): T {
+  const colums = Object.keys(row)
+  const fields = getTableColumns(model)
+  const obj = Object.create(model.prototype)
+  const getKey = (column: string) => fields.find(field => field.column === column)?.key
+  colums.forEach(column => {
+    const propertyKey = getKey(column)
+    if(propertyKey) {
+      obj[propertyKey] = row[column]
+    }
+  })
+  return obj as T
+}

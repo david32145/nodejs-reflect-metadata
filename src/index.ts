@@ -2,35 +2,44 @@ import "reflect-metadata"
 import Repository, {Table, Column} from "./core/Model"
 
 @Table("users")
-class User {
-  @Column("id")
-  private _id!: number
+class User extends Repository{
+  @Column("id", true)
+  public id!: number
   @Column("name")
-  private _name!: string
+  public name!: string
   @Column("email")
-  private _email!: string
-  @Column("descrition")
-  private _description!: string
+  public email!: string
+  @Column("description")
+  public description!: string
 
-  public get id() : number {
-    return this._id
-  }
-
-  public get name() : string {
-    return this._name
-  }
-  
-  public get email() : string {
-    return this._email
-  }
-
-  public test() {
-    return "bosta"
-  }
-
-  public get description() : string {
-    return this._description
+  public toJSON(): Object {
+    return {
+      id: this.id,
+      name: this.name,
+      email: this.email,
+      description: this.description
+    }
   }
 }
 
-Repository.findAll(User)
+
+
+async function main(): Promise<void> {
+  const users = await User.findAll()
+  users.forEach(user => {
+    if(user instanceof User) {
+      console.log(user.toJSON())
+    }
+  })
+
+  const newUser = new User()
+  newUser.name = "Daniela"
+  newUser.email = "dani@gmail.com"
+  newUser.description = "Daniela description"
+
+  // await User.create(newUser)
+}
+
+main()
+  .then(console.log)
+  .catch(console.error)
