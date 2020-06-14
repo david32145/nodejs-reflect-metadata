@@ -22,6 +22,24 @@ class User extends Repository{
   }
 }
 
+@Table("products")
+class Product extends Repository {
+  @Column("id", true)
+  public id!: number
+  @Column("title")
+  public title!: string
+  @Column("price")
+  public price!: number
+
+  public toJSON(): Object {
+    return {
+      id: this.id,
+      title: this.title,
+      price: this.price,
+    }
+  }
+}
+
 
 
 async function main(): Promise<void> {
@@ -32,12 +50,24 @@ async function main(): Promise<void> {
     }
   })
 
-  const newUser = new User()
-  newUser.name = "Daniela"
-  newUser.email = "dani@gmail.com"
-  newUser.description = "Daniela description"
+  // const newUser = new User()
+  // newUser.name = "Daniela"
+  // newUser.email = "dani@gmail.com"
+  // newUser.description = "Daniela description"
 
-  // await User.create(newUser)
+  // // await User.create(newUser)
+
+  // const newProduct = new Product()
+  // newProduct.title = "Product 1"
+  // newProduct.price = 12.9
+  // await Product.create(newProduct)
+
+  const products = await Product.findAll()
+  products.forEach(product => {
+    if(product instanceof Product) {
+      console.log(product.toJSON())
+    }
+  })
 }
 
 main()
