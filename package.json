@@ -4,12 +4,11 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "nodemon src/index.ts"
+    "dev": "tsnd --respawn --no-notify --transpileOnly src/index.ts"
   },
   "devDependencies": {
-    "nodemon": "^2.0.4",
     "reflect-metadata": "^0.1.13",
-    "sucrase": "^3.15.0",
+    "ts-node-dev": "^1.0.0-pre.47",
     "typescript": "^3.9.5"
   }
 }

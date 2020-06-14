@@ -1,5 +1,11 @@
+import "reflect-metadata"
 import Model from "./core/Model"
 
+function Table(constructor: Function) {
+  console.log(constructor)
+}
+
+@Table
 class User {
   private _id!: number
   private _name!: string

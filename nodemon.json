@@ -1,6 +1,0 @@
-{
-  "watch": ["src"],
-  "execMap": {
-    "ts": "sucrase-node  src/index.ts --transforms typescript,imports"
-  }
-}
