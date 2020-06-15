@@ -72,9 +72,8 @@ You can be view the full example into `src/index.ts` .
 
 1. Config you environment;
 2. Git clone `git clone https://github.com/david32145/nodejs-reflect-metadata` ; 
-3. Run `yarn install` or `npm install` for install dependencies; 
-4. Run `yarn migration:up` or `npm run migration:up` for up database migrations; 
-5. Copy .env.example to .env and fill with your config. Below an example of `.env` ; 
+3. Run `yarn install` or `npm install` for install dependencies;  
+4. Copy .env.example to .env and fill with your config. Below an example of `.env` ; 
 
 ``` env
 DB_HOST=localhost
@@ -83,6 +82,6 @@ DB_NAME=reflect_matadata
 DB_USER=root
 DB_PASS=root
 ```
-
+5. Run `yarn migration:up` or `npm run migration:up` for up database migrations;
 6. Run `yarn dev` or `npm run dev` 
 7. Edit `src/index.ts` and start the game.
