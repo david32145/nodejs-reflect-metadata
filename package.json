@@ -4,7 +4,8 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "tsnd --respawn --no-notify --transpileOnly src/index.ts"
+    "dev": "tsnd --respawn --no-notify --transpileOnly src/index.ts",
+    "migration:up": "knex migrate:latest"
   },
   "devDependencies": {
     "@types/knex": "^0.16.1",
@@ -14,6 +15,7 @@
     "typescript": "^3.9.5"
   },
   "dependencies": {
+    "dotenv": "^8.2.0",
     "knex": "^0.21.1",
     "mysql": "^2.18.1"
   }

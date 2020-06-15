@@ -1,5 +1,7 @@
 import "reflect-metadata"
+import "./config/env"
 import Repository, {Table, Column} from "./core/Model"
+
 
 @Table("users")
 class User extends Repository{

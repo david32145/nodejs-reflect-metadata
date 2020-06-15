@@ -2,11 +2,11 @@ import knex from "knex"
 export default knex({
   client: 'mysql',
   connection: {
-    port: 13306,
-    host: 'localhost',
-    database: 'reflect_matadata',
-    user: 'root',
-    password: 'root'
+    port: Number(process.env.DB_PORT),
+    host: process.env.DB_HOST,
+    database: process.env.DB_NAME,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASS
   },
   pool: {
     min: 2,
